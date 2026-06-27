@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Launching Leaders Facilitator Network</title>
+    <style>
+      :root {
+        --primary: #008080;
+        --primary-dark: #006666;
+        --accent: #c8a25e;
+        --accent-yellow: #ffc107;
+        --text-dark: #2c3e50;
+        --text-light: #ecf0f1;
+        --bg-light: #f8f9fa;
+        --bg-white: #ffffff;
+        --success: #28a745;
+        --error: #dc3545;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+        min-height: 100vh;
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Header */
+      .header {
+        text-align: center;
+        padding: 40px 20px;
+        background: var(--bg-white);
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 0 0 20px 20px;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .logo {
+        width: 80px;
+        height: 80px;
+        background: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        position: relative;
+      }
+
+      .logo::before {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: var(--accent-yellow);
+        transform: rotate(45deg);
+        border-radius: 5px;
+      }
+
+      .logo::after {
+        content: 'L';
+        font-size: 40px;
+        font-weight: bold;
+        color: var(--bg-white);
+        z-index: 1;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--text-dark);
+        margin-bottom: 5px;
+        letter-spacing: -1px;
+      }
+
+      .header h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        max-width: 700px;
+        margin: 0 auto;
+        font-weight: 500;
+      }
+
+      .tagline span {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .motto {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 3px solid var(--accent-yellow);
+        font-size: 1rem;
+        color: var(--text-dark);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Form Section */
+      .form-section {
+        background: var(--bg-white);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        margin-bottom: 40px;
+      }
+
+      .form-title {
+        text-align: center;
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin-bottom: 30px;
+        font-weight: 700;
+      }
+
+      .form-description {
+        text-align: center;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        background: var(--bg-white);
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: #aaa;
+      }
+
+      .form-group select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        padding-right: 40px;
+      }
+
+      .form-group select option {
+        padding: 10px;
+      }
+
+      .required {
+        color: var(--error);
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 15px 30px;
+        background: var(--primary);
+        color: var(--bg-white);
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        margin-top: 10px;
+      }
+
+      .submit-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .submit-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Success Message */
+      .success-message {
+        display: none;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: var(--bg-white);
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        margin-top: 20px;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .success-message h3 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .success-message p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        opacity: 0.95;
+      }
+
+      .success-message .facilitator-info {
+        background: rgba(255,255,255,0.2);
+        padding: 15px 25px;
+        border-radius: 8px;
+        margin: 20px auto;
+        max-width: 400px;
+      }
+
+      .success-message .facilitator-info h4 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+      }
+
+      .success-message .facilitator-info p {
+        margin: 5px 0;
+        font-size: 1rem;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 30px 20px;
+        background: var(--bg-white);
+        border-radius: 20px 20px 0 0;
+        margin-top: 40px;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      }
+
+      .footer-icons {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 20px;
+      }
+
+      .footer-icon {
+        width: 60px;
+        height: 60px;
+        border: 3px solid var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+
+      .footer-text {
+        color: var(--text-dark);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 1.8rem;
+        }
+        .header h2 {
+          font-size: 1.5rem;
+        }
+        .form-section {
+          padding: 30px 20px;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .logo {
+          width: 60px;
+          height: 60px;
+        }
+        .logo::before {
+          width: 30px;
+          height: 30px;
+        }
+        .logo::after {
+          font-size: 30px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 10px;
+        }
+        .header {
+          padding: 20px 15px;
+        }
+        .form-section {
+          padding: 20px 15px;
+        }
+      }
+
+      /* Loading spinner */
+      .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255,255,255,.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 10px;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      /* Error message */
+      .error-message {
+        color: var(--error);
+        font-size: 0.9rem;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-section">
+          <div class="logo"></div>
+          <div>
+            <h1>LAUNCHING</h1>
+            <h2>LEADERS</h2>
+          </div>
+        </div>
+        <p class="tagline">
+          <span>FACILITATOR NETWORK</span><br>
+          A dedicated network of leaders committed to empowering communities and creating lasting change.
+        </p>
+      </header>
+
+      <!-- Form Section -->
+      <section class="form-section">
+        <h2 class="form-title">Join a Facilitator Group</h2>
+        <p class="form-description">
+          Please fill in your details below to join a facilitator group. 
+          You will be automatically added to your chosen facilitator's WhatsApp group.
+          Any questions or messages will be sent to our administrator.
+        </p>
+
+        <form id="registrationForm" name="registration" netlify="true" action="#">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fullName">Full Name <span class="required">*</span></label>
+              <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+              <div id="nameError" class="error-message">Please enter your name</div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+              <div id="emailError" class="error-message">Please enter a valid email</div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+              <div id="phoneError" class="error-message">Please enter your phone number</div>
+            </div>
+
+            <div class="form-group">
+              <label for="stake">Stake <span class="required">*</span></label>
+              <select id="stake" name="stake" required>
+                <option value="">Select your stake</option>
+                <option value="Cape Town Stake">Cape Town Stake</option>
+                <option value="Bellville SA Stake">Bellville SA Stake</option>
+                <option value="Gqeberha Stake">Gqeberha Stake</option>
+                <option value="East London Stake">East London Stake</option>
+                <option value="Hillcrest SA Stake">Hillcrest SA Stake</option>
+                <option value="Johannesburg North Stake">Johannesburg North Stake</option>
+                <option value="Johannesburg North Stake Gathering Place">Johannesburg North Stake Gathering Place</option>
+                <option value="Mdantsane Stake">Mdantsane Stake</option>
+                <option value="GEC">GEC</option>
+                <option value="Growing People Great">Growing People Great</option>
+              </select>
+              <div id="stakeError" class="error-message">Please select your stake</div>
+            </div>
+
+            <div class="form-group">
+              <label for="facilitator">Facilitator <span class="required">*</span></label>
+              <select id="facilitator" name="facilitator" required>
+                <option value="">Select a facilitator</option>
+                <option value="Sis Tarisai MacMillan|simona.yipsa@gmail.com|081 355 8565|Cape Town Stake|https://chat.whatsapp.com/HGJKXUT8RYZLEKGYPVjJIg?mode=gi_t">Sis Tarisai MacMillan (Cape Town Stake)</option>
+                <option value="Br Noel Nyoni|nyoninoel@gmail.com|061 491 2383|Cape Town Stake|https://chat.whatsapp.com/CLDb30MCbVOFDmms6LIuM1?mode=gi_t">Br Noel Nyoni (Cape Town Stake)</option>
+                <option value="Br Taonatose Jiri|taonatose@gmail.com|078 632 0369|Bellville SA Stake|https://chat.whatsapp.com/Er6e0H5MIyg0PCa0xcLQdu?mode=gi_t">Br Taonatose Jiri (Bellville SA Stake)</option>
+                <option value="Br Hanson Msongweni|hmsongweni@gmail.com|083 555 3357|Bellville SA Stake|https://chat.whatsapp.com/FUxz2ccsxld1ye15t9oN7b?mode=gi_t">Br Hanson Msongweni (Bellville SA Stake)</option>
+                <option value="Sis Tamara Mnyakana|mnyakanatamara46@gmail.com||Gqeberha Stake|https://chat.whatsapp.com/EXNQAHdpyl0ECGdnqfX3FO?mode=gi_t">Sis Tamara Mnyakana (Gqeberha Stake)</option>
+                <option value="Br Derek Knipe|dinky.knipe@gmail.com|083 235 2644|East London Stake|https://chat.whatsapp.com/K1CidvRqQScGYEyovO7zNX?mode=gi_t">Br Derek Knipe (East London Stake)</option>
+                <option value="Br Brod van Brughan|brodwynvonbrughan@gmail.com||Hillcrest SA Stake|https://chat.whatsapp.com/HwDlkGVeor3BWISDP53scA?mode=gi_t">Br Brod van Brughan (Hillcrest SA Stake)</option>
+                <option value="Sis Loretta Monareng|loretta@themonarenggroup.com|071 842 7393|Johannesburg North Stake|https://chat.whatsapp.com/KMCcTq45KHP5l4ZAe4qmso?mode=gi_t">Sis Loretta Monareng (Johannesburg North Stake)</option>
+                <option value="Sis Nobuhle Ngamlana|ngamlanaobuhle@gmail.com|081 533 2782|Mdantsane Stake|https://chat.whatsapp.com/CDokN7fcFndGVvJsrraVU3?mode=gi_t">Sis Nobuhle Ngamlana (Mdantsane Stake)</option>
+                <option value="Yonelani Qinisile|yonelani.qinisile@byupw.edu||GEC|https://chat.whatsapp.com/HfdskqFWXoCA2rSvUqWdkH?mode=gi_t">Yonelani Qinisile (GEC)</option>
+                <option value="Nokulunga Nyoka|nnyoka@byupathway.edu||GEC|https://chat.whatsapp.com/GjTMDWgg5HTJkLKXQIRnhu?mode=gi_t">Nokulunga Nyoka (GEC)</option>
+                <option value="Luthando Matsaluka|luthando.matsaluka@gmail.com||Johannesburg North Stake Gathering Place|https://chat.whatsapp.com/BQ1V3zxPqEiIaMwWNj20Y2?mode=gi_t">Luthando Matsaluka (Johannesburg North Stake Gathering Place)</option>
+                <option value="Jared Cunningham|jared@growingpeoplegreat.com||Growing People Great|https://chat.whatsapp.com/LrWEy5n9MDOE7C6WjEWXlk?mode=gi_t">Jared Cunningham (Growing People Great)</option>
+              </select>
+              <div id="facilitatorError" class="error-message">Please select a facilitator</div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Additional Message (Optional)</label>
+              <textarea id="message" name="message" rows="4" placeholder="Any additional information or message..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn" class="submit-btn">
+            <span id="submitText">Join Group</span>
+            <span id="submitSpinner" class="spinner" style="display: none;"></span>
+          </button>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message">
+          <h3>Registration Successful!</h3>
+          <p>Thank you for joining the Launching Leaders Facilitator Network.</p>
+          <div class="facilitator-info" id="selectedFacilitatorInfo">
+            <!-- Will be populated by JavaScript -->
+          </div>
+          <p>Your facilitator will be in touch with you shortly.</p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-icons">
+          <div class="footer-icon">👥</div>
+          <div class="footer-icon">🤝</div>
+        </div>
+        <p class="footer-text">
+          BUILDING MORAL AND ETHICAL LEADERSHIP<br>
+          THROUGH SERVICE, LEARNING, AND ACTION.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('registrationForm');
+        const successMessage = document.getElementById('successMessage');
+        const facilitatorInfo = document.getElementById('selectedFacilitatorInfo');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+
+        // Form validation
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Reset error messages
+          const errorMessages = document.querySelectorAll('.error-message');
+          errorMessages.forEach(msg => msg.classList.remove('show'));
+          
+          // Validate form
+          let isValid = true;
+          
+          const fullName = document.getElementById('fullName').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const phone = document.getElementById('phone').value.trim();
+          const stake = document.getElementById('stake').value;
+          const facilitator = document.getElementById('facilitator').value;
+          
+          if (!fullName) {
+            document.getElementById('nameError').classList.add('show');
+            isValid = false;
+          }
+          
+          if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            document.getElementById('emailError').classList.add('show');
+            isValid = false;
+          }
+          
+          if (!phone) {
+            document.getElementById('phoneError').classList.add('show');
+            isValid = false;
+          }
+          
+          if (!stake) {
+            document.getElementById('stakeError').classList.add('show');
+            isValid = false;
+          }
+          
+          if (!facilitator) {
+            document.getElementById('facilitatorError').classList.add('show');
+            isValid = false;
+          }
+          
+          if (!isValid) return;
+          
+          // Show loading state
+          submitBtn.disabled = true;
+          submitText.textContent = 'Processing...';
+          submitSpinner.style.display = 'inline-block';
+          
+          // Parse facilitator data
+          const facilitatorParts = facilitator.split('|');
+          const facilitatorName = facilitatorParts[0];
+          const facilitatorEmail = facilitatorParts[1];
+          const facilitatorPhone = facilitatorParts[2];
+          const facilitatorStake = facilitatorParts[3];
+          
+          // Prepare form data for submission
+          const formData = {
+            fullName: fullName,
+            email: email,
+            phone: phone,
+            stake: stake,
+            facilitator: facilitatorName,
+            facilitatorEmail: facilitatorEmail,
+            facilitatorPhone: facilitatorPhone,
+            facilitatorStake: facilitatorStake,
+            message: document.getElementById('message').value.trim()
+          };
+          
+          // Get the additional message
+          const additionalMessage = document.getElementById('message').value.trim();
+          
+          // Format facilitator phone for admin notification (if needed)
+          const facilitatorPhoneFormatted = facilitatorPhone ? facilitatorPhone.replace(/\s+/g, '').replace(/^0/, '27') : null;
+          
+          // ADMIN WHATSAPP
+          const adminWhatsApp = '27662952912';
+          
+          // If there's an additional message, send it to admin
+          if (additionalMessage) {
+            const adminMessage = `New query from Launching Leaders registration:%0A%0A` +
+              `👤 Name: ${fullName}%0A` +
+              `📧 Email: ${email}%0A` +
+              `📞 Phone: ${phone}%0A` +
+              `📍 Stake: ${stake}%0A` +
+              `🎯 Facilitator: ${facilitatorName}%0A%0A` +
+              `💬 Query: ${encodeURIComponent(additionalMessage)}`;
+            
+            // Open admin WhatsApp in a new tab
+            if (adminWhatsApp && adminWhatsApp !== 'ADMIN_PHONE_NUMBER') {
+              window.open(`https://wa.me/${adminWhatsApp}?text=${adminMessage}`, '_blank');
+            }
+          }
+          
+          // FACILITATOR GROUP - Redirect user to join the group
+          // Get the WhatsApp group invite link for this facilitator
+          // Format: facilitatorName|email|phone|stake|GROUP_LINK
+          const facilitatorParts = facilitator.split('|');
+          const groupInviteLink = facilitatorParts[4]; // 5th element is the group link
+          
+          if (groupInviteLink) {
+            // Show success message briefly, then redirect to group
+            form.style.display = 'none';
+            facilitatorInfo.innerHTML = `
+              <h4>Joining ${facilitatorName}'s Group...</h4>
+              <p>You will be added to the WhatsApp group automatically</p>
+              <p>If not redirected, <a href="${groupInviteLink}" style="color: white; text-decoration: underline;">click here</a></p>
+            `;
+            successMessage.style.display = 'block';
+            
+            // Reset button state
+            submitBtn.disabled = false;
+            submitText.textContent = 'Join Group';
+            submitSpinner.style.display = 'none';
+            
+            // Redirect after 2 seconds
+            setTimeout(function() {
+              window.location.href = groupInviteLink;
+            }, 2000);
+            
+            console.log('Redirecting to group:', groupInviteLink);
+          } else {
+            // Fallback: Show facilitator info
+            setTimeout(function() {
+              form.style.display = 'none';
+              facilitatorInfo.innerHTML = `
+                <h4>${facilitatorName}</h4>
+                ${facilitatorEmail ? `<p>📧 ${facilitatorEmail}</p>` : ''}
+                ${facilitatorPhone ? `<p>📞 ${facilitatorPhone}</p>` : ''}
+                <p>📍 ${facilitatorStake}</p>
+                <p style="margin-top: 15px; font-size: 0.9em;">Group invite link not available. Please contact the facilitator directly.</p>
+              `;
+              successMessage.style.display = 'block';
+              
+              submitBtn.disabled = false;
+              submitText.textContent = 'Join Group';
+              submitSpinner.style.display = 'none';
+            }, 1500);
+          }
+        });
+
+        // Update facilitator dropdown based on stake selection
+        const stakeSelect = document.getElementById('stake');
+        const facilitatorSelect = document.getElementById('facilitator');
+        
+        stakeSelect.addEventListener('change', function() {
+          const selectedStake = this.value;
+          
+          // Reset facilitator dropdown
+          facilitatorSelect.innerHTML = '<option value="">Select a facilitator</option>';
+          
+          // Define facilitators by stake (with group links)
+          const facilitatorsByStake = {
+            'Cape Town Stake': [
+              { name: 'Sis Tarisai MacMillan', email: 'simona.yipsa@gmail.com', phone: '081 355 8565', groupLink: 'https://chat.whatsapp.com/HGJKXUT8RYZLEKGYPVjJIg?mode=gi_t' },
+              { name: 'Br Noel Nyoni', email: 'nyoninoel@gmail.com', phone: '061 491 2383', groupLink: 'https://chat.whatsapp.com/CLDb30MCbVOFDmms6LIuM1?mode=gi_t' }
+            ],
+            'Bellville SA Stake': [
+              { name: 'Br Taonatose Jiri', email: 'taonatose@gmail.com', phone: '078 632 0369', groupLink: 'https://chat.whatsapp.com/Er6e0H5MIyg0PCa0xcLQdu?mode=gi_t' },
+              { name: 'Br Hanson Msongweni', email: 'hmsongweni@gmail.com', phone: '083 555 3357', groupLink: 'https://chat.whatsapp.com/FUxz2ccsxld1ye15t9oN7b?mode=gi_t' }
+            ],
+            'Gqeberha Stake': [
+              { name: 'Sis Tamara Mnyakana', email: 'mnyakanatamara46@gmail.com', phone: '', groupLink: 'https://chat.whatsapp.com/EXNQAHdpyl0ECGdnqfX3FO?mode=gi_t' }
+            ],
+            'East London Stake': [
+              { name: 'Br Derek Knipe', email: 'dinky.knipe@gmail.com', phone: '083 235 2644', groupLink: 'https://chat.whatsapp.com/K1CidvRqQScGYEyovO7zNX?mode=gi_t' }
+            ],
+            'Hillcrest SA Stake': [
+              { name: 'Br Brod van Brughan', email: 'brodwynvonbrughan@gmail.com', phone: '', groupLink: 'https://chat.whatsapp.com/HwDlkGVeor3BWISDP53scA?mode=gi_t' }
+            ],
+            'Johannesburg North Stake': [
+              { name: 'Sis Loretta Monareng', email: 'loretta@themonarenggroup.com', phone: '071 842 7393', groupLink: 'https://chat.whatsapp.com/KMCcTq45KHP5l4ZAe4qmso?mode=gi_t' }
+            ],
+            'Johannesburg North Stake Gathering Place': [
+              { name: 'Luthando Matsaluka', email: 'luthando.matsaluka@gmail.com', phone: '', groupLink: 'https://chat.whatsapp.com/BQ1V3zxPqEiIaMwWNj20Y2?mode=gi_t' }
+            ],
+            'Mdantsane Stake': [
+              { name: 'Sis Nobuhle Ngamlana', email: 'ngamlanaobuhle@gmail.com', phone: '081 533 2782', groupLink: 'https://chat.whatsapp.com/CDokN7fcFndGVvJsrraVU3?mode=gi_t' }
+            ],
+            'GEC': [
+              { name: 'Yonelani Qinisile', email: 'yonelani.qinisile@byupw.edu', phone: '', groupLink: 'https://chat.whatsapp.com/HfdskqFWXoCA2rSvUqWdkH?mode=gi_t' },
+              { name: 'Nokulunga Nyoka', email: 'nnyoka@byupathway.edu', phone: '', groupLink: 'https://chat.whatsapp.com/GjTMDWgg5HTJkLKXQIRnhu?mode=gi_t' }
+            ],
+            'Growing People Great': [
+              { name: 'Jared Cunningham', email: 'jared@growingpeoplegreat.com', phone: '', groupLink: 'https://chat.whatsapp.com/LrWEy5n9MDOE7C6WjEWXlk?mode=gi_t' }
+            ]
+          };
+          
+          // Add facilitators for selected stake
+          if (selectedStake && facilitatorsByStake[selectedStake]) {
+            facilitatorsByStake[selectedStake].forEach(facilitator => {
+              const option = document.createElement('option');
+              option.value = `${facilitator.name}|${facilitator.email}|${facilitator.phone}|${selectedStake}|${facilitator.groupLink}`;
+              option.textContent = `${facilitator.name} (${selectedStake})`;
+              facilitatorSelect.appendChild(option);
+            });
+          } else {
+            // If no stake selected or stake not found, show all facilitators
+            const allFacilitators = [
+              { name: 'Sis Tarisai MacMillan', email: 'simona.yipsa@gmail.com', phone: '081 355 8565', stake: 'Cape Town Stake', groupLink: 'https://chat.whatsapp.com/HGJKXUT8RYZLEKGYPVjJIg?mode=gi_t' },
+              { name: 'Br Noel Nyoni', email: 'nyoninoel@gmail.com', phone: '061 491 2383', stake: 'Cape Town Stake', groupLink: 'https://chat.whatsapp.com/CLDb30MCbVOFDmms6LIuM1?mode=gi_t' },
+              { name: 'Br Taonatose Jiri', email: 'taonatose@gmail.com', phone: '078 632 0369', stake: 'Bellville SA Stake', groupLink: 'https://chat.whatsapp.com/Er6e0H5MIyg0PCa0xcLQdu?mode=gi_t' },
+              { name: 'Br Hanson Msongweni', email: 'hmsongweni@gmail.com', phone: '083 555 3357', stake: 'Bellville SA Stake', groupLink: 'https://chat.whatsapp.com/FUxz2ccsxld1ye15t9oN7b?mode=gi_t' },
+              { name: 'Sis Tamara Mnyakana', email: 'mnyakanatamara46@gmail.com', phone: '', stake: 'Gqeberha Stake', groupLink: 'https://chat.whatsapp.com/EXNQAHdpyl0ECGdnqfX3FO?mode=gi_t' },
+              { name: 'Br Derek Knipe', email: 'dinky.knipe@gmail.com', phone: '083 235 2644', stake: 'East London Stake', groupLink: 'https://chat.whatsapp.com/K1CidvRqQScGYEyovO7zNX?mode=gi_t' },
+              { name: 'Br Brod van Brughan', email: 'brodwynvonbrughan@gmail.com', phone: '', stake: 'Hillcrest SA Stake', groupLink: 'https://chat.whatsapp.com/HwDlkGVeor3BWISDP53scA?mode=gi_t' },
+              { name: 'Sis Loretta Monareng', email: 'loretta@themonarenggroup.com', phone: '071 842 7393', stake: 'Johannesburg North Stake', groupLink: 'https://chat.whatsapp.com/KMCcTq45KHP5l4ZAe4qmso?mode=gi_t' },
+              { name: 'Sis Nobuhle Ngamlana', email: 'ngamlanaobuhle@gmail.com', phone: '081 533 2782', stake: 'Mdantsane Stake', groupLink: 'https://chat.whatsapp.com/CDokN7fcFndGVvJsrraVU3?mode=gi_t' },
+              { name: 'Yonelani Qinisile', email: 'yonelani.qinisile@byupw.edu', phone: '', stake: 'GEC', groupLink: 'https://chat.whatsapp.com/HfdskqFWXoCA2rSvUqWdkH?mode=gi_t' },
+              { name: 'Nokulunga Nyoka', email: 'nnyoka@byupathway.edu', phone: '', stake: 'GEC', groupLink: 'https://chat.whatsapp.com/GjTMDWgg5HTJkLKXQIRnhu?mode=gi_t' },
+              { name: 'Luthando Matsaluka', email: 'luthando.matsaluka@gmail.com', phone: '', stake: 'Johannesburg North Stake Gathering Place', groupLink: 'https://chat.whatsapp.com/BQ1V3zxPqEiIaMwWNj20Y2?mode=gi_t' },
+              { name: 'Jared Cunningham', email: 'jared@growingpeoplegreat.com', phone: '', stake: 'Growing People Great', groupLink: 'https://chat.whatsapp.com/LrWEy5n9MDOE7C6WjEWXlk?mode=gi_t' }
+            ];
+            
+            allFacilitators.forEach(facilitator => {
+              const option = document.createElement('option');
+              option.value = `${facilitator.name}|${facilitator.email}|${facilitator.phone}|${facilitator.stake}|${facilitator.groupLink}`;
+              option.textContent = `${facilitator.name} (${facilitator.stake})`;
+              facilitatorSelect.appendChild(option);
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
